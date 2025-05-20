@@ -1,0 +1,16 @@
+services:
+
+  - type: web
+    name: Aplicación web interactiva para el análisis de mortalidad en Colombia
+    env : python
+    plan : free
+
+    buildCommands:
+      - pip install -r requirements.txt
+
+    startupCommands:
+      - gunicorn --chdir src app:server
+    
+    envVars:
+      - key: PYTHON_VERS
+        value: 3.12.8
