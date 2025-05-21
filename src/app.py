@@ -8,9 +8,9 @@ import json
 app = Dash(__name__)
 server = app.server
 
-df_Codigos_Muerte = pd.read_excel(r"Maestria_IA_AplicacionI_Actividad4\data\_Anexo2.CodigosDeMuerte_CE_15-03-23.xlsx",sheet_name="Final")
-df_Codigos_Departamento = pd.read_excel(r"Maestria_IA_AplicacionI_Actividad4\data\Divipola_CE_.xlsx", sheet_name="Hoja1")
-df_Data_Muertes = pd.read_excel(r"Maestria_IA_AplicacionI_Actividad4\data\Anexo1.NoFetal2019_CE_15-03-23.xlsx",sheet_name="No_Fetales_2019")
+df_Codigos_Muerte = pd.read_excel(r"data/Anexo2.CodigosDeMuerte_CE_15-03-23.xlsx",sheet_name="Final")
+df_Codigos_Departamento = pd.read_excel(r"data/Divipola_CE_.xlsx", sheet_name="Hoja1")
+df_Data_Muertes = pd.read_excel(r"data/Anexo1.NoFetal2019_CE_15-03-23.xlsx",sheet_name="No_Fetales_2019")
 with open(r"Maestria_IA_AplicacionI_Actividad4\data\Colombia.geo.json", encoding='utf-8') as f:
     geojson_col = json.load(f)
 
