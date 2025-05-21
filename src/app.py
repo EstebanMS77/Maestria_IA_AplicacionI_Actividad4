@@ -2,16 +2,25 @@ from dash import Dash, html, dcc,dash_table
 import plotly.express as px
 import pandas as pd
 from pandasql import sqldf
+import os
 import json
 
 
 app = Dash(__name__)
 server = app.server
 
-df_Codigos_Muerte = pd.read_excel(r"data/Anexo2.CodigosDeMuerte_CE_15-03-23.xlsx",sheet_name="Final")
-df_Codigos_Departamento = pd.read_excel(r"data/Divipola_CE_.xlsx", sheet_name="Hoja1")
-df_Data_Muertes = pd.read_excel(r"data/Anexo1.NoFetal2019_CE_15-03-23.xlsx",sheet_name="No_Fetales_2019")
-with open(r"Maestria_IA_AplicacionI_Actividad4\data\Colombia.geo.json", encoding='utf-8') as f:
+# Obtener la ruta al directorio actual
+current_dir = os.path.dirname(os.path.abspath(__file__))
+file_path_df_Codigos_Muerte = os.path.join(current_dir, 'data', '_Anexo2.CodigosDeMuerte_CE_15-03-23.xlsx')
+file_path_df_Codigos_Departamento = os.path.join(current_dir, 'data', 'Divipola_CE_.xlsx')
+file_path_df_Data_Muertes = os.path.join(current_dir, 'data', 'Anexo1.NoFetal2019_CE_15-03-23.xlsx')
+file_path_df_Colombia = os.path.join(current_dir, 'data', 'Colombia.geo.json')
+
+
+df_Codigos_Muerte = pd.read_excel(file_path_df_Codigos_Muerte,sheet_name="Final")
+df_Codigos_Departamento = pd.read_excel(file_path_df_Codigos_Departamento, sheet_name="Hoja1")
+df_Data_Muertes = pd.read_excel(file_path_df_Data_Muertes,sheet_name="No_Fetales_2019")
+with open(file_path_df_Colombia, encoding='utf-8') as f:
     geojson_col = json.load(f)
 
 Query_TotalMuertes = """
